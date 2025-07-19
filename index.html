@@ -42,27 +42,45 @@
             border-top: 1px solid #ddd;
         }
         
-        /* --- Final styles for JS-powered guide arrows --- */
-        .install-step {
-            position: relative; /* Each step is now its own positioning context */
+        /* --- Final styles for Visual Anchor Arrows --- */
+        .install-guide {
+            position: relative; /* Main canvas for the SVG layer */
+            overflow: hidden; /* Prevents arrows from drawing outside on weird resizes */
         }
-        .install-step .arrow-svg {
+        .step-image {
+            position: relative; /* Crucial for positioning the end anchor inside */
+        }
+        .arrow-start-anchor, .arrow-end-anchor {
+            position: relative; /* Allows JS to get its position reliably */
+        }
+        .arrow-end-anchor {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            /* background: rgba(255, 0, 0, 0.5); */ /* Uncomment for debugging anchor position */
+        }
+        /* Precise positioning of end anchors relative to their image container */
+        #end-anchor-1 { top: 23%; left: 80%; }
+        #end-anchor-2 { top: 46%; left: 78%; }
+
+        .arrow-canvas {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            overflow: visible;
+            z-index: 10;
         }
-        .install-step .arrow-path {
+        .arrow-path {
             stroke: var(--brand-primary);
-            stroke-width: 2.5;
+            stroke-width: 2px;
             fill: none;
-            stroke-dasharray: 5 5;
-            opacity: 0.8;
-            transition: opacity 0.3s;
+            stroke-dasharray: 6 6;
+            animation: dash 20s linear infinite;
         }
+        @keyframes dash { to { stroke-dashoffset: -1000; } }
+        
         .install-step {
             display: flex;
             align-items: center;
@@ -193,36 +211,26 @@
 
             <!-- Step 1: Install TestFlight -->
             <div class="install-step">
-                <div class="step-image" data-arrow-end="step1">
+                <div class="step-image">
                     <img src="assets/images/TestFlight_in_Appstore.PNG" alt="TestFlight on the App Store">
+                    <div id="end-anchor-1" class="arrow-end-anchor"></div>
                 </div>
                 <div class="step-text">
                     <h3>Step 1: Get the "Navigator"</h3>
-                    <p>First, please install Apple's official testing tool, <strong data-arrow-start="step1">TestFlight</strong>, from the App Store. It's the safe "navigator" that will guide you to our app.</p>
+                    <p>First, please install Apple's official testing tool, <strong class="arrow-start-anchor" id="start-anchor-1">TestFlight</strong>, from the App Store. It's the safe "navigator" that will guide you to our app.</p>
                 </div>
-                <svg class="arrow-svg" data-arrow-canvas="step1">
-                    <defs>
-                        <marker id="arrowhead-1" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="var(--brand-primary)" /></marker>
-                    </defs>
-                    <path class="arrow-path" marker-end="url(#arrowhead-1)"></path>
-                </svg>
             </div>
 
             <!-- Step 2: Install QuibitApp -->
             <div class="install-step">
                 <div class="step-text">
                     <h3>Step 2: Board the Ship</h3>
-                    <p>After opening TestFlight, you'll see the invitation for <strong>QuibitApp</strong>. Tap the <strong data-arrow-start="step2">"Install"</strong> button to get it on your phone. Welcome aboard!</p>
+                    <p>After opening TestFlight, you'll see the invitation for <strong>QuibitApp</strong>. Tap the <strong class="arrow-start-anchor" id="start-anchor-2">"Install"</strong> button to get it on your phone. Welcome aboard!</p>
                 </div>
-                <div class="step-image" data-arrow-end="step2">
+                <div class="step-image">
                     <img src="assets/images/QuibitApp_in_TestFlight.PNG" alt="QuibitApp invitation in TestFlight">
+                    <div id="end-anchor-2" class="arrow-end-anchor"></div>
                 </div>
-                <svg class="arrow-svg" data-arrow-canvas="step2">
-                    <defs>
-                        <marker id="arrowhead-2" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="var(--brand-primary)" /></marker>
-                    </defs>
-                    <path class="arrow-path" marker-end="url(#arrowhead-2)"></path>
-                </svg>
             </div>
         </div>
     </section>
@@ -237,59 +245,59 @@
             </div>
         </div>
     </footer>
+
+<svg class="arrow-canvas">
+    <defs>
+        <marker id="arrowhead-final" markerWidth="8" markerHeight="6" refX="7" refY="3" orient="auto" fill="var(--brand-primary)">
+            <polygon points="0 0, 8 3, 0 6" />
+        </marker>
+    </defs>
+    <path id="arrow-path-1" class="arrow-path" marker-end="url(#arrowhead-final)"></path>
+    <path id="arrow-path-2" class="arrow-path" marker-end="url(#arrowhead-final)"></path>
+</svg>
+
 <script>
-    function drawDynamicArrows() {
-        const steps = document.querySelectorAll('.install-step');
+    function drawVisualAnchorArrows() {
+        const canvas = document.querySelector('.arrow-canvas');
+        const canvasRect = canvas.getBoundingClientRect();
 
-        steps.forEach(step => {
-            const canvas = step.querySelector('.arrow-svg');
-            const path = canvas.querySelector('.arrow-path');
-            const startEl = step.querySelector('[data-arrow-start]');
-            const endEl = step.querySelector('[data-arrow-end]');
+        if (window.innerWidth <= 768) {
+            document.getElementById('arrow-path-1').setAttribute('d', '');
+            document.getElementById('arrow-path-2').setAttribute('d', '');
+            return;
+        }
 
-            if (!canvas || !path || !startEl || !endEl) return;
+        function connectAnchors(startId, endId, pathId) {
+            const startEl = document.getElementById(startId);
+            const endEl = document.getElementById(endId);
+            const path = document.getElementById(pathId);
 
-            if (window.innerWidth <= 768) {
-                path.setAttribute('d', ''); // Hide on mobile
-                return;
-            }
+            if (!startEl || !endEl || !path) return;
 
-            const stepRect = step.getBoundingClientRect();
             const startRect = startEl.getBoundingClientRect();
             const endRect = endEl.getBoundingClientRect();
 
-            // Calculate coordinates relative to the .install-step container
-            const startX = (startRect.left + startRect.width / 2) - stepRect.left;
-            const startY = (startRect.top + startRect.height / 2) - stepRect.top;
+            const startX = startRect.left + startRect.width / 2 - canvasRect.left;
+            const startY = startRect.top + startRect.height / 2 - canvasRect.top;
+            const endX = endRect.left + endRect.width / 2 - canvasRect.left;
+            const endY = endRect.top + endRect.height / 2 - canvasRect.top;
+
+            const isStartOnLeft = startX < endX;
+            const controlPointX1 = startX + (isStartOnLeft ? 100 : -100);
+            const controlPointY1 = startY;
+            const controlPointX2 = endX + (isStartOnLeft ? -100 : 100);
+            const controlPointY2 = endY;
             
-            // Determine if start is on left or right to adjust end point
-            const isStartOnLeft = startX < stepRect.width / 2;
-            
-            let endX, endY;
-
-            if (step.querySelector('.step-image') === endEl) { // If end is an image
-                endX = (endRect.left + (isStartOnLeft ? endRect.width * 0.75 : endRect.width * 0.25)) - stepRect.left;
-                endY = (endRect.top + endRect.height * 0.3) - stepRect.top;
-                 if (step.id === 'install-step-2' || step.querySelector('[data-arrow-start]').textContent.includes("Install")) {
-                    endY = (endRect.top + endRect.height * 0.5) - stepRect.top;
-                }
-            } else { // If end is text or other element
-                endX = (endRect.left + endRect.width / 2) - stepRect.left;
-                endY = (endRect.top + endRect.height / 2) - stepRect.top;
-            }
-
-            const controlX1 = startX + (isStartOnLeft ? 80 : -80);
-            const controlY1 = startY;
-            const controlX2 = endX + (isStartOnLeft ? -80 : 80);
-            const controlY2 = endY;
-
-            const d = `M ${startX},${startY} C ${controlX1},${controlY1} ${controlX2},${controlY2} ${endX},${endY}`;
+            const d = `M ${startX} ${startY} C ${controlPointX1} ${controlPointY1}, ${controlPointX2} ${controlPointY2}, ${endX} ${endY}`;
             path.setAttribute('d', d);
-        });
+        }
+
+        connectAnchors('start-anchor-1', 'end-anchor-1', 'arrow-path-1');
+        connectAnchors('start-anchor-2', 'end-anchor-2', 'arrow-path-2');
     }
 
-    window.addEventListener('load', drawDynamicArrows);
-    window.addEventListener('resize', drawDynamicArrows);
+    window.addEventListener('load', drawVisualAnchorArrows);
+    window.addEventListener('resize', drawVisualAnchorArrows);
 </script>
 </body>
 </html>
