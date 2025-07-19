@@ -40,31 +40,28 @@
             padding: 80px 0;
             background-color: var(--card-bg);
             border-top: 1px solid #ddd;
-            position: relative; /* The main container for absolute positioning of SVGs */
         }
         
-        /* --- New styles for JS-powered guide arrows --- */
-        .arrow-svg {
+        /* --- Final styles for JS-powered guide arrows --- */
+        .install-step {
+            position: relative; /* Each step is now its own positioning context */
+        }
+        .install-step .arrow-svg {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            overflow: visible; /* Allow path to draw outside SVG bounds */
+            overflow: visible;
         }
-        .arrow-path {
+        .install-step .arrow-path {
             stroke: var(--brand-primary);
             stroke-width: 2.5;
             fill: none;
             stroke-dasharray: 5 5;
             opacity: 0.8;
             transition: opacity 0.3s;
-        }
-        .arrow-start {
-            /* A subtle visual cue for the start point */
-            border-bottom: 2px dotted var(--brand-primary);
-            padding-bottom: 1px;
         }
         .install-step {
             display: flex;
@@ -195,25 +192,37 @@
             </div>
 
             <!-- Step 1: Install TestFlight -->
-            <div class="install-step" id="install-step-1">
-                <div class="step-image" id="step1-image-container">
+            <div class="install-step">
+                <div class="step-image" data-arrow-end="step1">
                     <img src="assets/images/TestFlight_in_Appstore.PNG" alt="TestFlight on the App Store">
                 </div>
                 <div class="step-text">
                     <h3>Step 1: Get the "Navigator"</h3>
-                    <p>First, please install Apple's official testing tool, <span class="arrow-start" id="arrow-start-1"><strong>TestFlight</strong></span>, from the App Store. It's the safe "navigator" that will guide you to our app.</p>
+                    <p>First, please install Apple's official testing tool, <strong data-arrow-start="step1">TestFlight</strong>, from the App Store. It's the safe "navigator" that will guide you to our app.</p>
                 </div>
+                <svg class="arrow-svg" data-arrow-canvas="step1">
+                    <defs>
+                        <marker id="arrowhead-1" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="var(--brand-primary)" /></marker>
+                    </defs>
+                    <path class="arrow-path" marker-end="url(#arrowhead-1)"></path>
+                </svg>
             </div>
 
             <!-- Step 2: Install QuibitApp -->
-            <div class="install-step" id="install-step-2">
+            <div class="install-step">
                 <div class="step-text">
                     <h3>Step 2: Board the Ship</h3>
-                    <p>After opening TestFlight, you'll see the invitation for <strong>QuibitApp</strong>. Tap the <span class="arrow-start" id="arrow-start-2"><strong>"Install"</strong></span> button to get it on your phone. Welcome aboard!</p>
+                    <p>After opening TestFlight, you'll see the invitation for <strong>QuibitApp</strong>. Tap the <strong data-arrow-start="step2">"Install"</strong> button to get it on your phone. Welcome aboard!</p>
                 </div>
-                <div class="step-image" id="step2-image-container">
+                <div class="step-image" data-arrow-end="step2">
                     <img src="assets/images/QuibitApp_in_TestFlight.PNG" alt="QuibitApp invitation in TestFlight">
                 </div>
+                <svg class="arrow-svg" data-arrow-canvas="step2">
+                    <defs>
+                        <marker id="arrowhead-2" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto"><polygon points="0 0, 6 2, 0 4" fill="var(--brand-primary)" /></marker>
+                    </defs>
+                    <path class="arrow-path" marker-end="url(#arrowhead-2)"></path>
+                </svg>
             </div>
         </div>
     </section>
@@ -228,59 +237,59 @@
             </div>
         </div>
     </footer>
-    <!-- SVG Canvas for Arrows -->
-    <svg class="arrow-svg">
-        <defs>
-            <marker id="arrowhead-js" markerWidth="6" markerHeight="4" refX="5" refY="2" orient="auto">
-                <polygon points="0 0, 6 2, 0 4" fill="var(--brand-primary)" />
-            </marker>
-        </defs>
-        <path id="arrow-path-1" class="arrow-path" marker-end="url(#arrowhead-js)"></path>
-        <path id="arrow-path-2" class="arrow-path" marker-end="url(#arrowhead-js)"></path>
-    </svg>
+<script>
+    function drawDynamicArrows() {
+        const steps = document.querySelectorAll('.install-step');
 
-    <!-- JavaScript for Dynamic Arrow Drawing -->
-    <script>
-        function drawArrows() {
-            // Only run on screens wide enough for the side-by-side layout
+        steps.forEach(step => {
+            const canvas = step.querySelector('.arrow-svg');
+            const path = canvas.querySelector('.arrow-path');
+            const startEl = step.querySelector('[data-arrow-start]');
+            const endEl = step.querySelector('[data-arrow-end]');
+
+            if (!canvas || !path || !startEl || !endEl) return;
+
             if (window.innerWidth <= 768) {
-                document.getElementById('arrow-path-1').setAttribute('d', '');
-                document.getElementById('arrow-path-2').setAttribute('d', '');
+                path.setAttribute('d', ''); // Hide on mobile
                 return;
             }
 
-            const container = document.querySelector('.install-guide').getBoundingClientRect();
+            const stepRect = step.getBoundingClientRect();
+            const startRect = startEl.getBoundingClientRect();
+            const endRect = endEl.getBoundingClientRect();
 
-            // --- Draw Arrow 1 ---
-            const start1 = document.getElementById('arrow-start-1').getBoundingClientRect();
-            const end1 = document.getElementById('step1-image-container').getBoundingClientRect();
-            const path1 = document.getElementById('arrow-path-1');
+            // Calculate coordinates relative to the .install-step container
+            const startX = (startRect.left + startRect.width / 2) - stepRect.left;
+            const startY = (startRect.top + startRect.height / 2) - stepRect.top;
             
-            const x1_start = start1.left + start1.width / 2 - container.left;
-            const y1_start = start1.top + start1.height / 2 - container.top;
-            const x1_end = end1.left + end1.width * 0.75 - container.left; // Target the download icon area
-            const y1_end = end1.top + end1.height * 0.25 - container.top;
+            // Determine if start is on left or right to adjust end point
+            const isStartOnLeft = startX < stepRect.width / 2;
             
-            const d1 = `M ${x1_start},${y1_start} C ${x1_start - 50},${y1_start} ${x1_end + 50},${y1_end} ${x1_end},${y1_end}`;
-            path1.setAttribute('d', d1);
+            let endX, endY;
 
-            // --- Draw Arrow 2 ---
-            const start2 = document.getElementById('arrow-start-2').getBoundingClientRect();
-            const end2 = document.getElementById('step2-image-container').getBoundingClientRect();
-            const path2 = document.getElementById('arrow-path-2');
+            if (step.querySelector('.step-image') === endEl) { // If end is an image
+                endX = (endRect.left + (isStartOnLeft ? endRect.width * 0.75 : endRect.width * 0.25)) - stepRect.left;
+                endY = (endRect.top + endRect.height * 0.3) - stepRect.top;
+                 if (step.id === 'install-step-2' || step.querySelector('[data-arrow-start]').textContent.includes("Install")) {
+                    endY = (endRect.top + endRect.height * 0.5) - stepRect.top;
+                }
+            } else { // If end is text or other element
+                endX = (endRect.left + endRect.width / 2) - stepRect.left;
+                endY = (endRect.top + endRect.height / 2) - stepRect.top;
+            }
 
-            const x2_start = start2.left + start2.width / 2 - container.left;
-            const y2_start = start2.top + start2.height / 2 - container.top;
-            const x2_end = end2.left + end2.width * 0.8 - container.left; // Target the install button area
-            const y2_end = end2.top + end2.height * 0.5 - container.top;
+            const controlX1 = startX + (isStartOnLeft ? 80 : -80);
+            const controlY1 = startY;
+            const controlX2 = endX + (isStartOnLeft ? -80 : 80);
+            const controlY2 = endY;
 
-            const d2 = `M ${x2_start},${y2_start} C ${x2_start + 50},${y2_start} ${x2_end - 50},${y2_end} ${x2_end},${y2_end}`;
-            path2.setAttribute('d', d2);
-        }
+            const d = `M ${startX},${startY} C ${controlX1},${controlY1} ${controlX2},${controlY2} ${endX},${endY}`;
+            path.setAttribute('d', d);
+        });
+    }
 
-        // Draw arrows on initial load and on window resize
-        window.addEventListener('load', drawArrows);
-        window.addEventListener('resize', drawArrows);
-    </script>
+    window.addEventListener('load', drawDynamicArrows);
+    window.addEventListener('resize', drawDynamicArrows);
+</script>
 </body>
 </html>
