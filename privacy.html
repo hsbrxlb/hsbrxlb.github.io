@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy - Quibit</title>
+    <style>
+        /* Design System Variables - Single Source of Truth */
+        :root {
+            --page-background: #ffffff;
+            --primary-text-color: #000000;
+            --link-color: #007AFF;
+            --warning-color: #FF6347;
+            --glass-background: rgba(128, 128, 128, 0.1);
+            --glass-background-medium: rgba(128, 128, 128, 0.15);
+            --glass-border: rgba(255, 255, 255, 0.45);
+            --glass-border-subtle: rgba(128, 128, 128, 0.3);
+            --glass-shadow: rgba(0, 0, 0, 0.10);
+            --warning-background: rgba(255, 99, 71, 0.15);
+            --info-background: rgba(0, 122, 255, 0.15);
+            --accent-border: var(--primary-text-color);
+            --corner-radius-small: 8px;
+            --corner-radius-medium: 12px;
+            --font-size-body: 17px;
+            --font-size-title: 28px;
+            --font-size-title2: 22px;
+            --font-size-title3: 20px;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--primary-text-color);
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: var(--page-background);
+        }
+        .container {
+            background: var(--glass-background);
+            padding: 40px;
+            border-radius: var(--corner-radius-medium);
+            border: 1px solid var(--glass-border);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 5px 10px var(--glass-shadow);
+        }
+        h1 {
+            color: var(--primary-text-color);
+            border-bottom: 3px solid var(--accent-border);
+            padding-bottom: 15px;
+            margin-bottom: 30px;
+            font-size: var(--font-size-title);
+            font-weight: bold;
+        }
+        h2 {
+            color: var(--primary-text-color);
+            margin-top: 35px;
+            margin-bottom: 15px;
+            font-size: var(--font-size-title2);
+            font-weight: bold;
+            border-left: 4px solid var(--accent-border);
+            padding-left: 15px;
+        }
+        h3 {
+            color: var(--primary-text-color);
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-size: var(--font-size-title3);
+            font-weight: 600;
+        }
+        .effective-date {
+            background-color: var(--glass-background-medium);
+            padding: 15px;
+            border-radius: var(--corner-radius-small);
+            margin-bottom: 30px;
+            font-weight: 600;
+            border: 1px solid var(--glass-border-subtle);
+        }
+        .data-table {
+            background-color: var(--glass-background);
+            border: 1px solid var(--glass-border-subtle);
+            border-radius: var(--corner-radius-small);
+            overflow: hidden;
+            margin: 20px 0;
+        }
+        .data-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .data-table th, .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid var(--glass-border-subtle);
+            font-size: var(--font-size-body);
+            color: var(--primary-text-color);
+        }
+        .data-table th {
+            background-color: var(--glass-background-medium);
+            font-weight: 600;
+        }
+        .highlight {
+            background-color: var(--glass-background-medium);
+            padding: 15px;
+            border-left: 4px solid var(--accent-border);
+            margin: 20px 0;
+            border-radius: var(--corner-radius-small);
+        }
+        .warning {
+            background-color: var(--warning-background);
+            padding: 15px;
+            border-left: 4px solid var(--warning-color);
+            margin: 20px 0;
+            border-radius: var(--corner-radius-small);
+        }
+        ul, ol {
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 8px;
+            font-size: var(--font-size-body);
+            color: var(--primary-text-color);
+        }
+        p {
+            font-size: var(--font-size-body);
+            color: var(--primary-text-color);
+        }
+        .contact-info {
+            background-color: var(--glass-background);
+            padding: 20px;
+            border-radius: var(--corner-radius-small);
+            margin-top: 30px;
+            border: 1px solid var(--glass-border-subtle);
+        }
+        .rights-box {
+            background-color: var(--info-background);
+            border: 2px solid var(--link-color);
+            padding: 20px;
+            border-radius: var(--corner-radius-small);
+            margin: 20px 0;
+        }
+        a {
+            color: var(--link-color);
+            text-decoration: none;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        @media (max-width: 600px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 20px;
+            }
+            .data-table {
+                overflow-x: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Privacy Policy</h1>
+        
+        <div class="effective-date">
+            <strong>Effective Date:</strong> January 8, 2025<br>
+            <strong>Last Updated:</strong> January 8, 2025
+        </div>
+
+        <p>Quibit, Inc. ("Quibit," "we," "us," or "our") respects your privacy and is committed to protecting your personal information. This Privacy Policy explains how we collect, use, share, and protect your information when you use the Quibit mobile application and related services (the "Service").</p>
+
+        <div class="highlight">
+            <strong>Your Privacy Matters:</strong> We believe in transparency about our data practices. This policy explains what information we collect, why we collect it, and how you can control your data.
+        </div>
+
+        <h2>1. Information We Collect</h2>
+        <p>We collect information to provide and improve our Service. The types of information we collect include:</p>
+
+        <h3>1.1 Information You Provide</h3>
+        <div class="highlight">
+            <strong>Data Collection Note:</strong> Most profile information is completely optional. During registration, only your email, password, and full name are required. All other profile data (bio, interests, photos, MBTI, school/work) can be skipped and added later at your discretion.
+        </div>
+        <div class="data-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Data Type</th>
+                        <th>Examples</th>
+                        <th>Purpose</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Account Information</td>
+                        <td>Email, password, username</td>
+                        <td>Account creation and authentication</td>
+                    </tr>
+                    <tr>
+                        <td>Profile Information</td>
+                        <td>Bio, interests, photos, MBTI personality type, school/work info (all optional)</td>
+                        <td>Personalization and user connections</td>
+                    </tr>
+                    <tr>
+                        <td>Activity Content</td>
+                        <td>Activity descriptions, photos, comments</td>
+                        <td>Displaying activities to other users</td>
+                    </tr>
+                    <tr>
+                        <td>Communications</td>
+                        <td>Messages, chat content</td>
+                        <td>Facilitating user communication</td>
+                    </tr>
+                    <tr>
+                        <td>Community Safety Data</td>
+                        <td>User reports, content reports, safety violations</td>
+                        <td>Maintaining community safety and content moderation</td>
+                    </tr>
+                    <tr>
+                        <td>User Blocking Data</td>
+                        <td>Blocked user lists, blocking preferences</td>
+                        <td>Personal safety and harassment prevention</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <h3>1.2 Information We Collect Automatically</h3>
+        <ul>
+            <li><strong>Location Data:</strong> Precise location to show nearby activities within 0.5 miles</li>
+            <li><strong>Device Information:</strong> Device type, operating system, app version</li>
+            <li><strong>Usage Data:</strong> How you interact with the app, features used, time spent</li>
+            <li><strong>Log Information:</strong> IP address, error logs, performance data</li>
+        </ul>
+
+        <h3>1.3 Information from Third Parties</h3>
+        <p>We may receive information from:</p>
+        <ul>
+            <li>Map and geocoding services for address validation</li>
+            <li>Analytics providers for app performance insights</li>
+        </ul>
+
+        <h2>2. How We Use Your Information</h2>
+        <p>We use your information for the following purposes:</p>
+
+        <h3>2.1 Core Service Functions</h3>
+        <ul>
+            <li><strong>Activity Matching:</strong> Show you relevant activities within walking distance</li>
+            <li><strong>User Connections:</strong> Help you find and connect with nearby users</li>
+            <li><strong>Communication:</strong> Enable messaging between connected users</li>
+            <li><strong>Safety:</strong> Maintain a safe community environment</li>
+        </ul>
+
+        <h3>2.2 Service Improvement</h3>
+        <ul>
+            <li>Analyze usage patterns to improve features</li>
+            <li>Develop new functionality based on user needs</li>
+            <li>Fix bugs and enhance performance</li>
+            <li>Conduct research and analytics</li>
+        </ul>
+
+        <h3>2.3 Business Operations</h3>
+        <ul>
+            <li>Provide customer support</li>
+            <li>Send important service updates</li>
+            <li>Comply with legal obligations</li>
+        </ul>
+
+        <h2>3. Location Data and Privacy</h2>
+        <div class="warning">
+            <strong>Location is Core to Our Service:</strong> Quibit is fundamentally a location-based app. We use your precise location to show you nearby activities and users within a 0.5-mile radius.
+        </div>
+
+        <h3>3.1 How We Use Location</h3>
+        <ul>
+            <li>Display activities and users near your current location</li>
+            <li>Calculate distances for activity recommendations</li>
+            <li>Enable location-based search and filtering</li>
+            <li>Improve local content relevance</li>
+        </ul>
+
+        <h3>3.2 Location Controls</h3>
+        <ul>
+            <li>You can disable location services in your device settings</li>
+            <li>Disabling location will significantly limit app functionality</li>
+            <li>We don't store detailed location history</li>
+            <li>Location sharing with other users is always your choice</li>
+        </ul>
+
+        <h2>4. Information Sharing and Disclosure</h2>
+        <p>We share your information only in specific circumstances:</p>
+
+        <h3>4.1 With Other Users</h3>
+        <ul>
+            <li>Your public profile information and activities you create</li>
+            <li>Messages you send to connected users</li>
+            <li>Your participation in activities (when you join)</li>
+        </ul>
+
+        <h3>4.2 With Service Providers</h3>
+        <ul>
+            <li>Cloud hosting and data storage providers</li>
+            <li>Payment processors (Apple for subscriptions)</li>
+            <li>Analytics and performance monitoring services</li>
+            <li>Customer support tools</li>
+        </ul>
+
+        <h3>4.3 Legal Requirements</h3>
+        <p>We may disclose information when required by law or to:</p>
+        <ul>
+            <li>Comply with legal process or government requests</li>
+            <li>Protect our rights and property</li>
+            <li>Ensure user safety and prevent harm</li>
+            <li>Investigate potential violations of our Terms</li>
+        </ul>
+
+        <h2>5. Data Security</h2>
+        <p>We implement appropriate technical and organizational measures to protect your information:</p>
+        <ul>
+            <li>Encryption of data in transit and at rest</li>
+            <li>Regular security assessments and updates</li>
+            <li>Access controls and authentication systems</li>
+            <li>Employee training on data protection</li>
+        </ul>
+
+        <div class="warning">
+            <strong>Important:</strong> No method of transmission over the internet or electronic storage is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.
+        </div>
+
+        <h2>6. Your Privacy Rights and Choices</h2>
+        <div class="rights-box">
+            <h3>Your Rights Include:</h3>
+            <ul>
+                <li><strong>Access:</strong> Request a copy of your personal data</li>
+                <li><strong>Correction:</strong> Update or correct inaccurate information</li>
+                <li><strong>Deletion:</strong> Request deletion of your account and data</li>
+                <li><strong>Portability:</strong> Receive your data in a portable format</li>
+                <li><strong>Objection:</strong> Object to certain processing activities</li>
+            </ul>
+        </div>
+
+        <h3>6.1 Account Controls</h3>
+        <ul>
+            <li>Edit your profile and privacy settings in the app</li>
+            <li>Control who can see your activities and profile</li>
+            <li>Manage your notification preferences</li>
+            <li>Delete your account and associated data</li>
+        </ul>
+
+        <h3>6.2 Data Deletion</h3>
+        <p>You can delete your account at any time through the app settings. When you delete your account:</p>
+        <ul>
+            <li>Your profile and activities will be removed</li>
+            <li>Your messages may remain for other users but will be anonymized</li>
+            <li>Some data may be retained for legal or security purposes</li>
+            <li>Deletion is permanent and cannot be undone</li>
+        </ul>
+
+        <h2>7. Data Retention</h2>
+        <p>We retain your information as follows:</p>
+        <ul>
+            <li><strong>Account Data:</strong> Until you delete your account</li>
+            <li><strong>Usage Data:</strong> Up to 2 years for analytics purposes</li>
+            <li><strong>Support Records:</strong> Up to 1 year after resolution</li>
+            <li><strong>Legal Compliance:</strong> As required by applicable law</li>
+        </ul>
+
+        <h2>8. Children's Privacy</h2>
+        <p>Quibit is intended for users 18 years and older. We do not knowingly collect personal information from children under 18. If we become aware that we have collected information from a child under 18, we will delete it immediately.</p>
+
+        <h2>9. International Data Transfers</h2>
+        <p>Your information may be transferred to and processed in countries other than your country of residence. We ensure appropriate safeguards are in place for such transfers in accordance with applicable data protection laws.</p>
+
+        <h2>10. Third-Party Services</h2>
+        <p>Our app may contain links to third-party websites or services. This Privacy Policy does not apply to those third parties. We encourage you to review their privacy policies before providing any information.</p>
+
+        <h2>11. Changes to This Privacy Policy</h2>
+        <p>We may update this Privacy Policy periodically. We will notify you of significant changes through:</p>
+        <ul>
+            <li>In-app notifications</li>
+            <li>Email to your registered address</li>
+            <li>Updates on our website</li>
+        </ul>
+        <p>Your continued use of the Service after changes constitutes acceptance of the updated policy.</p>
+
+        <h2>12. California Privacy Rights</h2>
+        <p>If you are a California resident, you have additional rights under the California Consumer Privacy Act (CCPA):</p>
+        <ul>
+            <li>Right to know what personal information we collect and how it's used</li>
+            <li>Right to delete personal information</li>
+            <li>Right to opt-out of the sale of personal information (we do not sell your data)</li>
+            <li>Right to non-discrimination for exercising your privacy rights</li>
+        </ul>
+
+        <h2>13. Contact Us</h2>
+        <div class="contact-info">
+            <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+            <p>
+                <strong>Email:</strong> privacy@quibitapp.com<br>
+                <strong>Data Protection Officer:</strong> dpo@quibitapp.com<br>
+                <strong>Address:</strong> Quibit, Inc.<br>
+                Boston, MA, United States
+            </p>
+            <p><strong>For California residents:</strong> You may also contact us toll-free at the number provided in your app settings.</p>
+        </div>
+
+        <p><em>We're committed to protecting your privacy while helping you build meaningful connections in your community!</em></p>
+    </div>
+</body>
+</html> 
