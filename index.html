@@ -34,6 +34,60 @@
             .hero h1 { font-size: 3rem; } .hero p { font-size: 1.2rem; }
             .gallery { flex-direction: column; align-items: center; }
         }
+        
+        /* --- Styles for the new 'How to Install' section --- */
+        .install-guide {
+            padding: 80px 0;
+            background-color: var(--card-bg);
+            border-top: 1px solid #ddd;
+        }
+        .install-step {
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+        .install-step:last-child {
+            margin-bottom: 0;
+        }
+        .install-step .step-image {
+            flex: 1;
+            max-width: 320px;
+            flex-shrink: 0;
+        }
+        .install-step .step-image img {
+            width: 100%;
+            border-radius: 16px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+        }
+        .install-step .step-text {
+            flex: 2;
+        }
+        .install-step .step-text h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        .install-step .step-text p {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            max-width: 500px;
+        }
+        /* Responsive adjustments for mobile */
+        @media (max-width: 768px) {
+            .install-step {
+                flex-direction: column;
+                text-align: center;
+            }
+            .install-step .step-text p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+            /* Reverse column order for the second step on mobile for better flow */
+            .install-step:nth-child(2) {
+                 flex-direction: column-reverse;
+            }
+        }
     </style>
 </head>
 <body>
@@ -103,6 +157,38 @@
                 <div class="screenshot-card"><img src="assets/images/friends_page.PNG" alt="Friends List"></div>
                 <div class="screenshot-card"><img src="assets/images/profile_page_jamie.PNG" alt="Jamie's Profile"></div>
                 <div class="screenshot-card"><img src="assets/images/profile_page_kenji.PNG" alt="Kenji's Profile"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HOW TO INSTALL SECTION -->
+    <section class="section install-guide" id="install">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Ready to Join Your Neighborhood?</h2>
+                <p class="section-subtitle">Just two simple steps to get started.</p>
+            </div>
+
+            <!-- Step 1: Install TestFlight -->
+            <div class="install-step">
+                <div class="step-image">
+                    <img src="assets/images/TestFlight_in_Appstore.PNG" alt="TestFlight on the App Store">
+                </div>
+                <div class="step-text">
+                    <h3>Step 1: Get the "Navigator"</h3>
+                    <p>First, please install Apple's official testing tool, <strong>TestFlight</strong>, from the App Store. It's the safe "navigator" that will guide you to our app.</p>
+                </div>
+            </div>
+
+            <!-- Step 2: Install QuibitApp -->
+            <div class="install-step">
+                <div class="step-text">
+                    <h3>Step 2: Board the Ship</h3>
+                    <p>After opening TestFlight, you'll see the invitation for <strong>QuibitApp</strong>. Tap the "<strong>Install</strong>" button to get it on your phone. Welcome aboard!</p>
+                </div>
+                <div class="step-image">
+                    <img src="assets/images/QuibitApp_in_TestFlight.PNG" alt="QuibitApp invitation in TestFlight">
+                </div>
             </div>
         </div>
     </section>
