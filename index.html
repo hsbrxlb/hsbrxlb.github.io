@@ -42,10 +42,36 @@
             border-top: 1px solid #ddd;
         }
         .install-step {
+            position: relative; /* This is crucial for positioning the arrow inside */
             display: flex;
             align-items: center;
             gap: 3rem;
             margin-bottom: 4rem;
+        }
+        .guide-arrow {
+            position: absolute;
+            pointer-events: none; /* Makes the arrow non-interactive */
+            stroke: var(--brand-primary);
+            stroke-width: 2;
+            fill: none;
+            stroke-dasharray: 4 4; /* Creates a dashed line effect */
+            opacity: 0.7;
+        }
+        /* Specific positioning for the first arrow */
+        #arrow-to-testflight {
+            top: 55%;
+            left: 45%;
+            width: 150px;
+            height: 50px;
+            transform: rotate(-15deg);
+        }
+        /* Specific positioning for the second arrow */
+        #arrow-to-quibit {
+            top: 55%;
+            right: 45%;
+            width: 150px;
+            height: 50px;
+            transform: rotate(15deg) scaleX(-1); /* Flip horizontally */
         }
         .install-step:last-child {
             margin-bottom: 0;
@@ -86,6 +112,9 @@
             /* Reverse column order for the second step on mobile for better flow */
             .install-step:nth-child(2) {
                  flex-direction: column-reverse;
+            }
+            .guide-arrow {
+                display: none; /* Hide arrows on mobile */
             }
         }
     </style>
@@ -178,6 +207,15 @@
                     <h3>Step 1: Get the "Navigator"</h3>
                     <p>First, please install Apple's official testing tool, <strong>TestFlight</strong>, from the App Store. It's the safe "navigator" that will guide you to our app.</p>
                 </div>
+                <!-- Arrow for Step 1 -->
+                <svg id="arrow-to-testflight" class="guide-arrow" viewBox="0 0 100 50" preserveAspectRatio="none">
+                    <defs>
+                        <marker id="arrowhead" markerWidth="5" markerHeight="3.5" refX="0" refY="1.75" orient="auto">
+                            <polygon points="0 0, 5 1.75, 0 3.5" />
+                        </marker>
+                    </defs>
+                    <path d="M 0,25 C 25,0 75,0 100,25" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrowhead)"></path>
+                </svg>
             </div>
 
             <!-- Step 2: Install QuibitApp -->
@@ -189,6 +227,17 @@
                 <div class="step-image">
                     <img src="assets/images/QuibitApp_in_TestFlight.PNG" alt="QuibitApp invitation in TestFlight">
                 </div>
+                <!-- Arrow for Step 2 -->
+                <svg id="arrow-to-quibit" class="guide-arrow" viewBox="0 0 100 50" preserveAspectRatio="none">
+                    <!-- The arrowhead definition can be reused, but for clarity we include it here.
+                         A more advanced implementation would define it once globally. -->
+                    <defs>
+                        <marker id="arrowhead-step2" markerWidth="5" markerHeight="3.5" refX="0" refY="1.75" orient="auto">
+                            <polygon points="0 0, 5 1.75, 0 3.5" />
+                        </marker>
+                    </defs>
+                    <path d="M 0,25 C 25,0 75,0 100,25" stroke-linejoin="round" stroke-linecap="round" marker-end="url(#arrowhead-step2)"></path>
+                </svg>
             </div>
         </div>
     </section>
