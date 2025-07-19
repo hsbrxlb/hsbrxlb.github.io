@@ -6,177 +6,95 @@
     <title>Quibit - Connect with your neighbors</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --bg-color: #F0F2F5;
-            --text-primary: #1c1e21;
-            --text-secondary: #606770;
-            --brand-primary: #007AFF;
-            --card-bg: #FFFFFF;
-            --shadow-light: rgba(0, 0, 0, 0.05);
-            --shadow-medium: rgba(0, 0, 0, 0.1);
-        }
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-primary);
-            line-height: 1.6;
-            margin: 0;
-        }
-        .container {
-            max-width: 1100px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-        /* --- Header & Hero Section --- */
-        .hero {
-            text-align: center;
-            padding: 100px 0;
-        }
-        .app-logo {
-            width: 100px;
-            height: 100px;
-            margin: 0 auto 20px;
-            border-radius: 22px;
-            box-shadow: 0 10px 30px var(--shadow-medium);
-        }
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 1rem;
-        }
-        .hero p {
-            font-size: 1.5rem;
-            color: var(--text-secondary);
-            margin-bottom: 2rem;
-        }
-        .cta-button {
-            display: inline-block;
-            background-color: var(--brand-primary);
-            color: white;
-            padding: 15px 30px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 1.1rem;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3);
-        }
-        .cta-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4);
-        }
-        /* --- Features Section --- */
-        .features {
-            padding: 80px 0;
-            background-color: var(--card-bg);
-        }
-        .gallery {
-            padding: 80px 0;
-        }
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-        }
-        .section-subtitle {
-            text-align: center;
-            font-size: 1.2rem;
-            color: var(--text-secondary);
-            margin-bottom: 4rem;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .screenshot-gallery {
-            display: flex;
-            gap: 2rem;
-            justify-content: center;
-            flex-wrap: wrap; /* This allows wrapping on smaller screens */
-        }
-        .screenshot-card {
-            background: var(--card-bg);
-            border-radius: 20px;
-            padding: 15px;
-            box-shadow: 0 15px 40px var(--shadow-medium);
-            width: 280px; /* Fixed width for consistency */
-            flex-shrink: 0; /* Prevents cards from shrinking */
-        }
-        .screenshot-card img {
-            width: 100%;
-            border-radius: 12px;
-            display: block;
-        }
-        /* --- Footer --- */
-        .footer {
-            text-align: center;
-            padding: 40px 0;
-            background-color: #e4e6eb;
-        }
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
-            margin: 0 15px;
+        :root { --bg-color: #F0F2F5; --text-primary: #1c1e21; --text-secondary: #606770; --brand-primary: #007AFF; --card-bg: #FFFFFF; --shadow-medium: rgba(0, 0, 0, 0.1); }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; margin: 0; }
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        .section { padding: 80px 0; }
+        .hero { text-align: center; padding: 100px 0 60px; }
+        .app-logo { width: 100px; height: 100px; margin: 0 auto 20px; border-radius: 22px; box-shadow: 0 10px 30px var(--shadow-medium); }
+        .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; }
+        .hero p { font-size: 1.5rem; color: var(--text-secondary); margin-bottom: 2rem; }
+        .cta-button { display: inline-block; background-color: var(--brand-primary); color: white; padding: 15px 30px; border-radius: 12px; text-decoration: none; font-weight: 600; font-size: 1.1rem; transition: transform 0.2s ease, box-shadow 0.2s ease; box-shadow: 0 4px 15px rgba(0, 122, 255, 0.3); }
+        .cta-button:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0, 122, 255, 0.4); }
+        .section-header { text-align: center; margin-bottom: 4rem; }
+        .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
+        .section-subtitle { font-size: 1.2rem; color: var(--text-secondary); max-width: 600px; margin-left: auto; margin-right: auto; }
+        .screenshot-card { background: var(--card-bg); border-radius: 20px; padding: 15px; box-shadow: 0 15px 40px var(--shadow-medium); width: 280px; flex-shrink: 0; }
+        .screenshot-card img { width: 100%; border-radius: 12px; display: block; }
+        .gallery { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; }
+        .story-pair { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+        .footer { text-align: center; padding: 40px 0; background-color: #e4e6eb; }
+        .footer-links a { color: var(--text-secondary); text-decoration: none; margin: 0 15px; }
+        @media (max-width: 900px) {
+            .story-pair { flex-direction: column; align-items: center; gap: 2rem; }
         }
         @media (max-width: 768px) {
-            .hero h1 { font-size: 3rem; }
-            .hero p { font-size: 1.2rem; }
-            .screenshot-gallery {
-                flex-direction: column;
-                align-items: center;
-            }
+            .hero h1 { font-size: 3rem; } .hero p { font-size: 1.2rem; }
+            .gallery { flex-direction: column; align-items: center; }
         }
     </style>
 </head>
 <body>
-
     <section class="hero">
         <div class="container">
             <img src="assets/images/quibitapp_logo.png" alt="QuibitApp Logo" class="app-logo">
             <h1>Quibit</h1>
             <p>Connect with your neighbors, one shared Thing at a time.</p>
-            <a href="https://testflight.apple.com/join/[YOUR_TESTFLIGHT_CODE_HERE]" class="cta-button">Join the Beta on TestFlight</a>
+            <a href="https://testflight.apple.com/join/gcjwsbMA" class="cta-button">Join the Beta on TestFlight</a>
         </div>
     </section>
 
-    <section class="features">
+    <!-- ACT 1: THE WORLDVIEW -->
+    <section class="section" style="background-color: var(--card-bg);">
         <div class="container">
-            <h2 class="section-title">How it works</h2>
-            <p class="section-subtitle">Rediscover your local community by sharing small activities and helping each other out. It's that simple.</p>
-            
-            <div class="screenshot-gallery">
-                <!-- Storytelling Order: Fun & Social First -->
-                <div class="screenshot-card">
-                    <img src="assets/images/ThingDetails_jamie_photography_1.PNG" alt="Street Photography Event">
-                </div>
-                <div class="screenshot-card">
-                    <img src="assets/images/ThingDetails_taylor_YogaBuddy_1.PNG" alt="Yoga Buddy Wanted">
-                </div>
-                <div class="screenshot-card">
-                    <img src="assets/images/ThingsDiscover_page_1.PNG" alt="Discover Feed">
-                </div>
+            <div class="section-header">
+                <h2 class="section-title">This is Quibit</h2>
+                <p class="section-subtitle">A live feed of small opportunities to connect with people right outside your door.</p>
+            </div>
+            <div class="gallery">
+                <div class="screenshot-card"><img src="assets/images/ThingsDiscover_page_1.PNG" alt="Discover Feed"></div>
+                <div class="screenshot-card"><img src="assets/images/Things_page_2.PNG" alt="More things to discover"></div>
             </div>
         </div>
     </section>
 
-    <section class="gallery">
+    <!-- ACT 2: THE PLOT -->
+    <section class="section">
         <div class="container">
-            <h2 class="section-title">Build Real Connections</h2>
-            <p class="section-subtitle">From finding friends with shared interests to getting a helping hand from a neighbor, Quibit is about real-world interactions.</p>
+            <div class="section-header">
+                <h2 class="section-title">Share Fun, Get Help</h2>
+                <p class="section-subtitle">From finding a partner for your hobbies to getting a hand with daily tasks. See what your neighbors are up to.</p>
+            </div>
+            <!-- Story 1: Fun -->
+            <div class="story-pair">
+                <div class="screenshot-card"><img src="assets/images/ThingDetails_jamie_photography_1.PNG" alt="Street Photography Event"></div>
+                <div class="screenshot-card"><img src="assets/images/ThingDetails_jamie_photography_2.PNG" alt="Street Photography Details"></div>
+            </div>
+            <div class="story-pair">
+                <div class="screenshot-card"><img src="assets/images/ThingDetails_Taylor_hiking_1.PNG" alt="Hiking Buddy Event"></div>
+                <div class="screenshot-card"><img src="assets/images/ThingDetails_Taylor_hiking_2.PNG" alt="Hiking Buddy Details"></div>
+            </div>
+            <!-- Story 2: Utility -->
+            <div class="story-pair">
+                <div class="screenshot-card"><img src="assets/images/ThingDetails_kenji_MoveHelp_1.PNG" alt="Help with Moving"></div>
+                <div class="screenshot-card"><img src="assets/images/ThingDetails_kenji_MoveHelp_2.PNG" alt="Moving Help Details"></div>
+            </div>
+        </div>
+    </section>
 
-            <div class="screenshot-gallery">
-                 <!-- Storytelling Order: Utility & Connection -->
-                <div class="screenshot-card">
-                    <img src="assets/images/ThingDetails_kenji_MoveHelp_1.PNG" alt="Help with Moving">
-                </div>
-                <div class="screenshot-card">
-                    <img src="assets/images/friends_page.PNG" alt="Friends List">
-                </div>
-                <div class="screenshot-card">
-                    <img src="assets/images/profile_page_kenji.PNG" alt="User Profile">
-                </div>
+    <!-- ACT 3: THE CHARACTERS -->
+    <section class="section" style="background-color: var(--card-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Meet Real People</h2>
+                <p class="section-subtitle">Build your local circle with authentic profiles and genuine connections.</p>
+            </div>
+            <div class="gallery">
+                <div class="screenshot-card"><img src="assets/images/friends_page.PNG" alt="Friends List"></div>
+                <div class="screenshot-card"><img src="assets/images/profile_page_jamie.PNG" alt="Jamie's Profile"></div>
+                <div class="screenshot-card"><img src="assets/images/profile_page_kenji.PNG" alt="Kenji's Profile"></div>
             </div>
         </div>
     </section>
@@ -191,6 +109,5 @@
             </div>
         </div>
     </footer>
-
 </body>
 </html>
