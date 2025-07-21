@@ -88,6 +88,55 @@
                  flex-direction: column-reverse;
             }
         }
+
+        /* --- Styles for Section 5: Vertical Feed Scroller --- */
+        .feed-mockup {
+            max-width: 340px; /* Width of a phone */
+            height: 550px; /* Height of the viewport */
+            margin: 0 auto;
+            border-radius: 20px;
+            box-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.2);
+            overflow: hidden; /* This is crucial */
+            padding: 10px;
+            background-color: #e4e6eb; /* A subtle background for the mockup */
+        }
+
+        .feed-scroller {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            animation: scroll-vertical 40s linear infinite;
+        }
+
+        .feed-mockup:hover .feed-scroller {
+            animation-play-state: paused;
+        }
+
+        .feed-scroller div {
+            flex-shrink: 0;
+        }
+
+        .feed-scroller img {
+            width: 100%;
+            border-radius: 12px; /* Match other card styles */
+            display: block;
+        }
+
+        @keyframes scroll-vertical {
+            from {
+                transform: translateY(0);
+            }
+            to {
+                transform: translateY(-50%); /* Scroll up by half the total height */
+            }
+        }
+
+        /* Respect user's motion preferences */
+        @media (prefers-reduced-motion) {
+            .feed-scroller {
+                animation: none;
+            }
+        }
     </style>
 </head>
 <body>
@@ -95,68 +144,104 @@
         <div class="container">
             <img src="assets/images/quibitapp_logo.png" alt="QuibitApp Logo" class="app-logo">
             <h1>Quibit</h1>
-            <p>Connect with your neighbors, one shared Thing at a time.</p>
+            <p>Real connection, right outside your door.</p>
             <a href="https://testflight.apple.com/join/gcjwsbMA" class="cta-button">Join the Beta on TestFlight</a>
         </div>
     </section>
 
-    <!-- ACT 1: THE WORLDVIEW -->
+    <!-- Section 1: Find a Buddy. A NEARBY Buddy -->
     <section class="section" style="background-color: var(--card-bg);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">This is Quibit</h2>
-                <p class="section-subtitle">A live feed of small opportunities to connect with people right outside your door.</p>
+                <h2 class="section-title">Find a Buddy. A NEARBY Buddy.</h2>
+                <p class="section-subtitle">Can't live near your friends? Turn the people nearby into friends! Say no to loneliness, your next hangout is just in 5 minutes.</p>
             </div>
             <div class="gallery">
-                <div class="screenshot-card"><img src="assets/images/ThingsDiscover_page_1.PNG" alt="Discover Feed"></div>
-                <div class="screenshot-card"><img src="assets/images/Things_page_2.PNG" alt="More things to discover"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW ACT 2: FIND YOUR CREW -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Find Your Crew, Just Around the Corner</h2>
-                <p class="section-subtitle">Looking for a photography partner or a hiking buddy? Discover neighbors who share your passions and start doing things together.</p>
-            </div>
-            <div class="story-pair">
-                <div class="screenshot-card"><img src="assets/images/ThingDetails_jamie_photography_1.PNG" alt="Street Photography Event"></div>
-                <div class="screenshot-card"><img src="assets/images/ThingDetails_jamie_photography_2.PNG" alt="Street Photography Details"></div>
-            </div>
-            <div class="story-pair">
-                <div class="screenshot-card"><img src="assets/images/ThingDetails_Taylor_hiking_1.PNG" alt="Hiking Buddy Event"></div>
-                <div class="screenshot-card"><img src="assets/images/ThingDetails_Taylor_hiking_2.PNG" alt="Hiking Buddy Details"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- NEW ACT 3: LEND A HAND, CREATE VALUE -->
-    <section class="section" style="background-color: var(--card-bg);">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Lend a Hand, Create Value</h2>
-                <p class="section-subtitle">Your skills and time are valuable. Help a neighbor with a task, and you might just find opportunities to earn a little extra on the side.</p>
-            </div>
-            <div class="story-pair">
-                <div class="screenshot-card"><img src="assets/images/ThingDetails_kenji_MoveHelp_1.PNG" alt="Help with Moving"></div>
-                <div class="screenshot-card"><img src="assets/images/ThingDetails_kenji_MoveHelp_2.PNG" alt="Moving Help Details"></div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ACT 4: THE CHARACTERS -->
-    <section class="section">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Meet Real People</h2>
-                <p class="section-subtitle">Build your local circle with authentic profiles and genuine connections.</p>
+                <div class="screenshot-card"><img src="assets/images/Things_Page_1.jpg" alt="Things Page 1"></div>
+                <div class="screenshot-card"><img src="assets/images/Things_Page_2.jpg" alt="Things Page 2"></div>
             </div>
             <div class="gallery">
-                <div class="screenshot-card"><img src="assets/images/friends_page.PNG" alt="Friends List"></div>
+                <div class="screenshot-card"><img src="assets/images/friends_page.PNG" alt="Friends Page"></div>
                 <div class="screenshot-card"><img src="assets/images/profile_page_jamie.PNG" alt="Jamie's Profile"></div>
                 <div class="screenshot-card"><img src="assets/images/profile_page_kenji.PNG" alt="Kenji's Profile"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 2: Do Something First, Connect Later -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Do Something First, Connect Later.</h2>
+                <p class="section-subtitle">Skip the endless small talk. Meet someone by joining a Thing you actually like.</p>
+            </div>
+            <div class="story-pair">
+                <div class="screenshot-card"><img src="assets/images/GroupChatHiking.jpeg" alt="Group Chat Hiking"></div>
+                <div class="screenshot-card"><img src="assets/images/GroupChatMoving.jpeg" alt="Group Chat Moving"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 3: No Labels. Just Vibes -->
+    <section class="section" style="background-color: var(--card-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">No Labels. Just Vibes.</h2>
+                <p class="section-subtitle">If the vibe is right, anything can happen. A friendship, a date, a professional link, a mentor... No expectations. Just be you.</p>
+            </div>
+            <div class="gallery">
+                <div class="screenshot-card"><img src="assets/images/Friendship.jpg" alt="Friendship"></div>
+                <div class="screenshot-card"><img src="assets/images/RomanticRelationship.jpg" alt="Romantic Relationship"></div>
+                <div class="screenshot-card"><img src="assets/images/ProfessionalRelationship.jpg" alt="Professional Relationship"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 4: Collaborate & Create Value -->
+    <section class="section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Collaborate & Create Value.</h2>
+                <p class="section-subtitle">Less outsourcing, more community-sourcing. Unlock a more convenient life and create value with easy, nearby interactions.</p>
+            </div>
+            <div class="story-pair">
+                <div class="screenshot-card"><img src="assets/images/ThingDetailMoving.jpeg" alt="Thing Detail Moving"></div>
+                <div class="screenshot-card"><img src="assets/images/ThingDetailCoffeeChat.jpeg" alt="Thing Detail Coffee Chat"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 5: From Big Plans to Small Favors -->
+    <section class="section" style="background-color: var(--card-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">From Big Plans to Small Favors.</h2>
+                <p class="section-subtitle">A hiking crew, a gym partner, a concert buddy... all the way down to a last-minute lifesaver. Like when you're one egg short for that recipe. Post it. Find it. Make it happen.</p>
+            </div>
+            <div class="feed-mockup">
+                <div class="feed-scroller">
+                    <div><img src="assets/images/ThingCardBorrowEggs.jpg" alt="Borrow Eggs"></div>
+                    <div><img src="assets/images/ThingCardCoffeeChat.jpg" alt="Coffee Chat"></div>
+                    <div><img src="assets/images/ThingCardTennis.jpg" alt="Tennis"></div>
+                    <div><img src="assets/images/ThingCardValorant.jpg" alt="Valorant"></div>
+                    <div><img src="assets/images/ThingCardYoga.jpg" alt="Yoga"></div>
+                    <div><img src="assets/images/ThingCardBoardGame.jpg" alt="Board Game"></div>
+                    <div><img src="assets/images/ThingCardStudy.jpg" alt="Study"></div>
+                    <div><img src="assets/images/ThingCardHiking.jpg" alt="Hiking"></div>
+                    <div><img src="assets/images/ThingCardGym.jpg" alt="Gym"></div>
+                    <div><img src="assets/images/ThingCardFishing.jpg" alt="Fishing"></div>
+                    <!-- Duplicate the list for seamless loop -->
+                    <div><img src="assets/images/ThingCardBorrowEggs.jpg" alt="Borrow Eggs"></div>
+                    <div><img src="assets/images/ThingCardCoffeeChat.jpg" alt="Coffee Chat"></div>
+                    <div><img src="assets/images/ThingCardTennis.jpg" alt="Tennis"></div>
+                    <div><img src="assets/images/ThingCardValorant.jpg" alt="Valorant"></div>
+                    <div><img src="assets/images/ThingCardYoga.jpg" alt="Yoga"></div>
+                    <div><img src="assets/images/ThingCardBoardGame.jpg" alt="Board Game"></div>
+                    <div><img src="assets/images/ThingCardStudy.jpg" alt="Study"></div>
+                    <div><img src="assets/images/ThingCardHiking.jpg" alt="Hiking"></div>
+                    <div><img src="assets/images/ThingCardGym.jpg" alt="Gym"></div>
+                    <div><img src="assets/images/ThingCardFishing.jpg" alt="Fishing"></div>
+                </div>
             </div>
         </div>
     </section>
@@ -165,7 +250,7 @@
     <section class="section install-guide" id="install">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Ready to Join Your Neighborhood?</h2>
+                <h2 class="section-title">Ready to Make It Happen?</h2>
                 <p class="section-subtitle">Just two simple steps to get started.</p>
             </div>
 
