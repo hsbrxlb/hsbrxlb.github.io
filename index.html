@@ -8,8 +8,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Recoleta:wght@400;500;600;700;800&display=swap');
         :root { --bg-color: #F0F2F5; --text-primary: #1c1e21; --text-secondary: #606770; --brand-primary: #007AFF; --card-bg: #FFFFFF; --shadow-medium: rgba(0, 0, 0, 0.1); }
-        body { font-family: 'Inter', sans-serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; margin: 0; }
+        body { font-family: 'Recoleta', serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; margin: 0; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
         .section { padding: 80px 0; }
         .hero { text-align: center; padding: 100px 0 60px; }
@@ -142,6 +143,47 @@
         .gallery-enlarged .screenshot-card {
             width: 350px; /* Original 280px * 1.25 = 350px */
         }
+
+        /* --- Styles for Staggered Scroll Animations --- */
+        .stagger-child {
+            opacity: 0;
+            transition: opacity 0.6s ease-out, transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        .stagger-child.slide-up {
+            transform: translateY(40px);
+        }
+        .stagger-child.scale-up {
+            transform: scale(0.9);
+        }
+        .stagger-child.is-visible {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        /* --- Responsive Refinements for Mobile --- */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem; /* Was 3rem */
+            }
+            .section-title {
+                font-size: 2.2rem; /* Was 2.5rem */
+                line-height: 1.25;
+            }
+            .section-subtitle {
+                font-size: 1.1rem; /* Was 1.2rem */
+            }
+            .section {
+                padding: 60px 0; /* Was 80px */
+            }
+            .screenshot-card, .gallery-enlarged .screenshot-card {
+                width: 90%; /* From fixed to responsive width */
+                max-width: 380px; /* Set a max-width for consistency */
+            }
+            .feed-mockup {
+                transform: scale(0.9); /* Make scroller slightly smaller on mobile */
+                transform-origin: top center;
+            }
+        }
     </style>
 </head>
 <body>
@@ -155,13 +197,9 @@
     </section>
 
     <!-- Section 5: From Big Plans to Small Favors (Top Placement) -->
-    <section class="section" style="background-color: var(--card-bg);">
+    <section class="section stagger-container" style="background-color: var(--card-bg);">
         <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">From Big Plans to Small Favors.</h2>
-                <p class="section-subtitle">A hiking crew, a gym partner, a concert buddy... all the way down to a last-minute lifesaver. Like when you're one egg short for that recipe. Post it. Find it. Make it happen.</p>
-            </div>
-            <div class="feed-mockup">
+            <div class="feed-mockup stagger-child scale-up">
                 <div class="feed-scroller">
                     <div><img src="assets/images/ThingCardBorrowEggs.jpg" alt="Borrow Eggs"></div>
                     <div><img src="assets/images/ThingCardCoffeeChat.jpg" alt="Coffee Chat"></div>
@@ -190,13 +228,13 @@
     </section>
 
     <!-- Section 1: Find a Buddy. A NEARBY Buddy -->
-    <section class="section" style="background-color: var(--card-bg);">
+    <section class="section stagger-container" style="background-color: var(--card-bg);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Find a Buddy. A NEARBY Buddy.</h2>
-                <p class="section-subtitle">Can't live near your friends? Turn the people nearby into friends! Say no to loneliness, your next hangout is just in 5 minutes.</p>
+                <h2 class="section-title stagger-child slide-up">Find a Buddy. A NEARBY Buddy.</h2>
+                <p class="section-subtitle stagger-child slide-up">Can't live near your friends? Turn the people nearby into friends! Say no to loneliness, your next hangout is just in 5 minutes.</p>
             </div>
-            <div class="gallery">
+            <div class="gallery stagger-child scale-up">
                 <div class="screenshot-card"><img src="assets/images/friends_page.PNG" alt="Friends Page"></div>
                 <div class="screenshot-card"><img src="assets/images/profile_page_jamie.PNG" alt="Jamie's Profile"></div>
                 <div class="screenshot-card"><img src="assets/images/profile_page_kenji.PNG" alt="Kenji's Profile"></div>
@@ -205,13 +243,13 @@
     </section>
 
     <!-- Section 2: Do Something First, Connect Later -->
-    <section class="section">
+    <section class="section stagger-container">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Do Something First, Connect Later.</h2>
-                <p class="section-subtitle">Skip the endless small talk. Meet someone by joining a Thing you actually like.</p>
+                <h2 class="section-title stagger-child slide-up">Do Something First, Connect Later.</h2>
+                <p class="section-subtitle stagger-child slide-up">Skip the endless small talk. Meet someone by joining a Thing you actually like.</p>
             </div>
-            <div class="story-pair">
+            <div class="story-pair stagger-child scale-up">
                 <div class="screenshot-card"><img src="assets/images/GroupChatHiking.jpeg" alt="Group Chat Hiking"></div>
                 <div class="screenshot-card"><img src="assets/images/GroupChatMoving.jpeg" alt="Group Chat Moving"></div>
             </div>
@@ -219,13 +257,13 @@
     </section>
 
     <!-- Section 3: No Labels. Just Vibes -->
-    <section class="section" style="background-color: var(--card-bg);">
+    <section class="section stagger-container" style="background-color: var(--card-bg);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">No Labels. Just Vibes.</h2>
-                <p class="section-subtitle">If the vibe is right, anything can happen. A friendship, a date, a professional link, a mentor... No expectations. Just be you.</p>
+                <h2 class="section-title stagger-child slide-up">No Labels. Just Vibes.</h2>
+                <p class="section-subtitle stagger-child slide-up">If the vibe is right, anything can happen. A friendship, a date, a professional link, a mentor... No expectations. Just be you.</p>
             </div>
-            <div class="gallery gallery-enlarged">
+            <div class="gallery gallery-enlarged stagger-child scale-up">
                 <div class="screenshot-card"><img src="assets/images/Friendship.jpg" alt="Friendship"></div>
                 <div class="screenshot-card"><img src="assets/images/RomanticRelationship.jpg" alt="Romantic Relationship"></div>
                 <div class="screenshot-card"><img src="assets/images/ProfessionalRelationship.jpg" alt="Professional Relationship"></div>
@@ -234,13 +272,13 @@
     </section>
 
     <!-- Section 4: Collaborate & Create Value -->
-    <section class="section">
+    <section class="section stagger-container">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Collaborate & Create Value.</h2>
-                <p class="section-subtitle">Less outsourcing, more community-sourcing. Unlock a more convenient life and create value with easy, nearby interactions.</p>
+                <h2 class="section-title stagger-child slide-up">Collaborate & Create Value.</h2>
+                <p class="section-subtitle stagger-child slide-up">Less outsourcing, more community-sourcing. Unlock a more convenient life and create value with easy, nearby interactions.</p>
             </div>
-            <div class="story-pair">
+            <div class="story-pair stagger-child scale-up">
                 <div class="screenshot-card"><img src="assets/images/ThingDetailMoving.jpeg" alt="Thing Detail Moving"></div>
                 <div class="screenshot-card"><img src="assets/images/ThingDetailCoffeeChat.jpeg" alt="Thing Detail Coffee Chat"></div>
             </div>
@@ -248,13 +286,13 @@
     </section>
 
     <!-- Section 5: From Big Plans to Small Favors -->
-    <section class="section" style="background-color: var(--card-bg);">
+    <section class="section stagger-container" style="background-color: var(--card-bg);">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">From Big Plans to Small Favors.</h2>
-                <p class="section-subtitle">A hiking crew, a gym partner, a concert buddy... all the way down to a last-minute lifesaver. Like when you're one egg short for that recipe. Post it. Find it. Make it happen.</p>
+                <h2 class="section-title stagger-child slide-up">From Big Plans to Small Favors.</h2>
+                <p class="section-subtitle stagger-child slide-up">A hiking crew, a gym partner, a concert buddy... all the way down to a last-minute lifesaver. Like when you're one egg short for that recipe. Post it. Find it. Make it happen.</p>
             </div>
-            <div class="feed-mockup">
+            <div class="feed-mockup stagger-child scale-up">
                 <div class="feed-scroller">
                     <div><img src="assets/images/ThingCardBorrowEggs.jpg" alt="Borrow Eggs"></div>
                     <div><img src="assets/images/ThingCardCoffeeChat.jpg" alt="Coffee Chat"></div>
@@ -283,15 +321,15 @@
     </section>
 
     <!-- HOW TO INSTALL SECTION -->
-    <section class="section install-guide" id="install">
+    <section class="section install-guide stagger-container" id="install">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Ready to Make It Happen?</h2>
-                <p class="section-subtitle">Just two simple steps to get started.</p>
+                <h2 class="section-title stagger-child slide-up">Ready to Make It Happen?</h2>
+                <p class="section-subtitle stagger-child slide-up">Just two simple steps to get started.</p>
             </div>
 
             <!-- Step 1: Install TestFlight -->
-            <div class="install-step">
+            <div class="install-step stagger-child scale-up">
                 <div class="step-image">
                     <img src="assets/images/TestFlight_in_Appstore.PNG" alt="TestFlight on the App Store">
                 </div>
@@ -302,7 +340,7 @@
             </div>
 
             <!-- Step 2: Install QuibitApp -->
-            <div class="install-step">
+            <div class="install-step stagger-child scale-up">
                 <div class="step-text">
                     <h3>Step 2: Board the Ship</h3>
                     <p>After opening TestFlight, you'll see the invitation for <strong>QuibitApp</strong>. Tap the "<strong>Install</strong>" button to get it on your phone. Welcome aboard!</p>
@@ -324,5 +362,28 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const elementsToStagger = entry.target.querySelectorAll('.stagger-child');
+                        elementsToStagger.forEach((child, index) => {
+                            child.style.transitionDelay = `${index * 120}ms`; // Stagger delay
+                            child.classList.add('is-visible');
+                        });
+                        observer.unobserve(entry.target); // Animate only once
+                    }
+                });
+            }, {
+                threshold: 0.15, // Trigger when 15% is visible
+                rootMargin: "0px 0px -50px 0px" // Start animation a bit before it's fully centered
+            });
+
+            const sectionsToAnimate = document.querySelectorAll('.stagger-container');
+            sectionsToAnimate.forEach(section => observer.observe(section));
+        });
+    </script>
 </body>
 </html>
