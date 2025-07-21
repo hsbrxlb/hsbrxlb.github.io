@@ -137,6 +137,11 @@
                 animation: none;
             }
         }
+
+        /* --- Enlarged gallery for specific sections --- */
+        .gallery-enlarged .screenshot-card {
+            width: 350px; /* Original 280px * 1.25 = 350px */
+        }
     </style>
 </head>
 <body>
@@ -149,16 +154,47 @@
         </div>
     </section>
 
+    <!-- Section 5: From Big Plans to Small Favors (Top Placement) -->
+    <section class="section" style="background-color: var(--card-bg);">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">From Big Plans to Small Favors.</h2>
+                <p class="section-subtitle">A hiking crew, a gym partner, a concert buddy... all the way down to a last-minute lifesaver. Like when you're one egg short for that recipe. Post it. Find it. Make it happen.</p>
+            </div>
+            <div class="feed-mockup">
+                <div class="feed-scroller">
+                    <div><img src="assets/images/ThingCardBorrowEggs.jpg" alt="Borrow Eggs"></div>
+                    <div><img src="assets/images/ThingCardCoffeeChat.jpg" alt="Coffee Chat"></div>
+                    <div><img src="assets/images/ThingCardTennis.jpg" alt="Tennis"></div>
+                    <div><img src="assets/images/ThingCardValorant.jpg" alt="Valorant"></div>
+                    <div><img src="assets/images/ThingCardYoga.jpg" alt="Yoga"></div>
+                    <div><img src="assets/images/ThingCardBoardGame.jpg" alt="Board Game"></div>
+                    <div><img src="assets/images/ThingCardStudy.jpg" alt="Study"></div>
+                    <div><img src="assets/images/ThingCardHiking.jpg" alt="Hiking"></div>
+                    <div><img src="assets/images/ThingCardGym.jpg" alt="Gym"></div>
+                    <div><img src="assets/images/ThingCardFishing.jpg" alt="Fishing"></div>
+                    <!-- Duplicate the list for seamless loop -->
+                    <div><img src="assets/images/ThingCardBorrowEggs.jpg" alt="Borrow Eggs"></div>
+                    <div><img src="assets/images/ThingCardCoffeeChat.jpg" alt="Coffee Chat"></div>
+                    <div><img src="assets/images/ThingCardTennis.jpg" alt="Tennis"></div>
+                    <div><img src="assets/images/ThingCardValorant.jpg" alt="Valorant"></div>
+                    <div><img src="assets/images/ThingCardYoga.jpg" alt="Yoga"></div>
+                    <div><img src="assets/images/ThingCardBoardGame.jpg" alt="Board Game"></div>
+                    <div><img src="assets/images/ThingCardStudy.jpg" alt="Study"></div>
+                    <div><img src="assets/images/ThingCardHiking.jpg" alt="Hiking"></div>
+                    <div><img src="assets/images/ThingCardGym.jpg" alt="Gym"></div>
+                    <div><img src="assets/images/ThingCardFishing.jpg" alt="Fishing"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 1: Find a Buddy. A NEARBY Buddy -->
     <section class="section" style="background-color: var(--card-bg);">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Find a Buddy. A NEARBY Buddy.</h2>
                 <p class="section-subtitle">Can't live near your friends? Turn the people nearby into friends! Say no to loneliness, your next hangout is just in 5 minutes.</p>
-            </div>
-            <div class="gallery">
-                <div class="screenshot-card"><img src="assets/images/Things_Page_1.jpg" alt="Things Page 1"></div>
-                <div class="screenshot-card"><img src="assets/images/Things_Page_2.jpg" alt="Things Page 2"></div>
             </div>
             <div class="gallery">
                 <div class="screenshot-card"><img src="assets/images/friends_page.PNG" alt="Friends Page"></div>
@@ -189,7 +225,7 @@
                 <h2 class="section-title">No Labels. Just Vibes.</h2>
                 <p class="section-subtitle">If the vibe is right, anything can happen. A friendship, a date, a professional link, a mentor... No expectations. Just be you.</p>
             </div>
-            <div class="gallery">
+            <div class="gallery gallery-enlarged">
                 <div class="screenshot-card"><img src="assets/images/Friendship.jpg" alt="Friendship"></div>
                 <div class="screenshot-card"><img src="assets/images/RomanticRelationship.jpg" alt="Romantic Relationship"></div>
                 <div class="screenshot-card"><img src="assets/images/ProfessionalRelationship.jpg" alt="Professional Relationship"></div>
