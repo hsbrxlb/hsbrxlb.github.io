@@ -9,11 +9,17 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Recoleta:wght@400;500;600;700;800&display=swap');
-        @import url('https://fonts.googleapis.com/css2?family=Hannotate+SC&display=swap');
+        @font-face {
+            font-family: 'Hannotate SC';
+            src: url('assets/fonts/Hannotate.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
         :root { --bg-color: #F0F2F5; --text-primary: #1c1e21; --text-secondary: #606770; --brand-primary: #007AFF; --card-bg: #FFFFFF; --shadow-medium: rgba(0, 0, 0, 0.1); }
         body { font-family: 'Hannotate SC', sans-serif; background-color: var(--bg-color); color: var(--text-primary); line-height: 1.6; margin: 0; }
         .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
-        .section { padding: 80px 0; }
+        .section { padding: 40px 0; }
         .hero { text-align: center; padding: 100px 0 60px; }
         .app-logo { width: 100px; height: 100px; margin: 0 auto 20px; border-radius: 22px; box-shadow: 0 10px 30px var(--shadow-medium); }
         .hero h1 { font-size: 4rem; font-weight: 800; margin-bottom: 1rem; }
@@ -39,7 +45,7 @@
         
         /* --- Styles for the new 'How to Install' section --- */
         .install-guide {
-            padding: 80px 0;
+            padding: 40px 0;
             background-color: var(--card-bg);
             border-top: 1px solid #ddd;
         }
@@ -171,7 +177,7 @@
                 font-size: 1.1rem; /* Was 1.2rem */
             }
             .section {
-                padding: 60px 0; /* Was 80px */
+                padding: 30px 0; /* Was 60px */
             }
             .screenshot-card, .gallery-enlarged .screenshot-card {
                 width: 90%; /* From fixed to responsive width */
