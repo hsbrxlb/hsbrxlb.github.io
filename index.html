@@ -114,6 +114,9 @@
             display: flex;
             flex-direction: column;
             gap: 15px;
+        }
+
+        .feed-scroller.animation-ready {
             animation: scroll-vertical 40s linear infinite;
         }
 
@@ -139,7 +142,7 @@
 
         /* Respect user's motion preferences */
         @media (prefers-reduced-motion) {
-            .feed-scroller {
+            .feed-scroller.animation-ready {
                 animation: none;
             }
         }
@@ -329,6 +332,30 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        // IIFE to avoid polluting the global scope
+        (function() {
+            // Check if the Font Loading API is supported
+            if ('fonts' in document) {
+                // This is a promise that resolves when all fonts are loaded and ready.
+                document.fonts.ready.then(function () {
+                    // Find the element we want to animate
+                    var scroller = document.querySelector('.feed-scroller');
+                    if (scroller) {
+                        // Add the magic class to start the animation
+                        scroller.classList.add('animation-ready');
+                    }
+                });
+            } else {
+                // Fallback for very old browsers: just start the animation
+                var scroller = document.querySelector('.feed-scroller');
+                if (scroller) {
+                    scroller.classList.add('animation-ready');
+                }
+            }
+        })();
+    </script>
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
