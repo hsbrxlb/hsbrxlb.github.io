@@ -4,7 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Support - Quibit</title>
+    <link rel="preload" href="assets/fonts/HannotateSC-subset.woff2" as="font" type="font/woff2" crossorigin>
     <style>
+        @font-face {
+            font-family: 'Hannotate SC';
+            src: url('assets/fonts/HannotateSC-subset.woff2') format('woff2');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+        
         :root {
             --page-background: #F0F2F5;
             --primary-text-color: #1c1e21;
@@ -15,7 +24,7 @@
             --corner-radius-medium: 12px;
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Hannotate SC', sans-serif;
             line-height: 1.6;
             color: var(--primary-text-color);
             background-color: var(--page-background);
@@ -82,5 +91,16 @@
             <a href="terms.html">Terms of Service</a>
         </div>
     </div>
+    
+    <script>
+        (function() {
+            if ('fonts' in document) {
+                document.fonts.ready.then(function () {
+                    // This space is reserved for potential future animations on these pages.
+                    // For now, it just ensures font-swapping happens smoothly.
+                });
+            }
+        })();
+    </script>
 </body>
 </html>
